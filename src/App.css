@@ -3,8 +3,9 @@
 
 body {
   font-family: 'Source Serif Pro', serif;
-  background-color: #ebf4ef;
-
+  background: linear-gradient(135deg, #ffffff, #c9fa97, #f6f6eb);
+  background-size: cover;
+  background-position: center;
   justify-content: center;
   align-items: center;
 }
@@ -20,9 +21,27 @@ body {
 }
 
 .App-header {
-  background: linear-gradient(135deg, #1A374D, #2CB67D);
-  padding: 20px;
+ background: linear-gradient(135deg, #1A374D, #2CB67D);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
   color: white;
+}
+
+.signup-button {
+  background-color: #1A374D; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px 3px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 0.4s;
 }
 
 .title-container {
@@ -54,6 +73,10 @@ body {
   flex-direction: column;
   cursor: pointer;
   overflow: hidden;
+}
+
+a.card-link {
+  text-decoration: none;
 }
 
 .card h2 {

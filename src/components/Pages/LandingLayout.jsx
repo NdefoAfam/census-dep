@@ -8,6 +8,7 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
     <div className="App">
       <header className="App-header">
         <h1>CENSUS DEPARTMENT</h1>
+        <Link to="/signup" className="signup-button">Sign Up</Link>
       </header>
       <main>
         <div className="title-container">
@@ -19,31 +20,28 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
         </div>
 
         <div className="card-container">
-          <Link to="/attendance">
+          <Link to="/attendance" className="card-link">
             <Card 
               imgSrc="/assets/attendance.jpg" 
               altText="Attendance Management"
               title="Attendance Management"
-              address="258 Serenity Lane, Crestwood Hills"
-              content="This is the content of the first card. It can be a brief description or any information you want to highlight."
+              content="Efficiently track and manage staff attendance with our comprehensive system. Ensure accuracy and streamline your processes to improve productivity and accountability within your department."
             />
           </Link>
-          <Link to="/request">
+          <Link to="/login" className="card-link">
             <Card 
               imgSrc="/assets/requestcard.jpg" 
               altText="Request Management"
               title="Request Management"
-              address="258 Serenity Lane, Crestwood Hills"
-              content="This is the content of the first card. It can be a brief description or any information you want to highlight."
+              content="Streamline and manage all visitor requests efficiently. Our system ensures that every request is tracked, processed, and resolved promptly for operational effectiveness."
             />
           </Link>
-          <Link to="/mail">
+          <Link to="/login" className="card-link">
             <Card 
               imgSrc="/assets/mail.jpg" 
               altText="Mails Management"
               title="Mails Management"
-              address="258 Serenity Lane, Crestwood Hills"
-              content="This is the content of the first card. It can be a brief description or any information you want to highlight."
+              content="Efficiently handle and track all incoming and outgoing mail within the department. This system ensures all correspondence is properly managed, and delivered."
             />
           </Link>
         </div>
@@ -57,7 +55,7 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
           <ul className="footer-links">
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms of Service</a></li>
-            <li><Link to ="/Mail">Mail</Link></li>
+            <li><Link to ="/Contact">Contact</Link></li>
           </ul>
         </div>
       </footer>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoginSignup.css'; // Assuming you have a common CSS file for both forms
+import './LoginSignup.css';
 
 const LoginPage = () => {
   return (

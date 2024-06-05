@@ -6,7 +6,7 @@ const RoutedLayout = () => {
   return (
     <div>
       <header>
-        <h1>Department Management System</h1>
+        {/*<h1>Department Management System</h1>*/}
       </header>
       <main>
         <Outlet /> {/* This is where the routed components will be rendered */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoginSignup.css'; // Assuming you have a common CSS file for both forms
+import './LoginSignup.css';
 
 const SignupPage = () => {
   return (
@@ -7,8 +7,8 @@ const SignupPage = () => {
       <form>
         <h3>Sign Up</h3>
         <div className="form-group">
-          <label htmlFor="fullName">Full Name</label>
-          <input type="text" id="fullName" name="fullName" required />
+          <label htmlFor="email">Full Name</label>
+          <input type="email" id="email" name="email" required />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -16,6 +16,10 @@ const SignupPage = () => {
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Re-enter Password</label>
           <input type="password" id="password" name="password" required />
         </div>
         <div className="form-group submit-btn">

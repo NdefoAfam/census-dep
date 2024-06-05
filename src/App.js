@@ -4,9 +4,9 @@ import Attendance from './components/Pages/Attendance';
 import Mail from './components/Pages/Mail';
 import Request from './components/Pages/Request';
 import LandingLayout from './components/Pages/LandingLayout'; 
-import FormComponent from './FormComponent';
-import LoginPage from './LoginPage';
-import SignupPage from './SignupPage';
+import RoutedLayout from './components/Pages/RoutedLayout';
+import LoginPage from './components/Pages/LoginPage';
+import SignupPage from './components/Pages/SignupPage';
 import './App.css';
 
 function App() {
@@ -17,6 +17,8 @@ function App() {
         <Route path="request" element={<Request />} />
         <Route path="mail" element={<Mail />} />
       </Route>
+      <Route path="login" element={<LoginPage />} />
+      <Route path="signup" element={<SignupPage />} />
     </Routes>
   );
 }
