@@ -3,6 +3,8 @@ import { Link, Outlet } from 'react-router-dom';
 import Card from '../Card'; // Ensure the Card component path is correct
 import '../../App.css'; // Adjust the path to App.css based on its location
 
+
+
 const LandingLayout = () => { // Renamed the component to LandingLayout
   return (
     <div className="App">
@@ -33,7 +35,7 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
               imgSrc="/assets/requestcard.jpg" 
               altText="Request Management"
               title="Request Management"
-              content="Streamline and manage all visitor requests efficiently. Our system ensures that every request is tracked, processed, and resolved promptly for operational effectiveness."
+              content="Streamline and manage all visitor requests efficiently. This system ensures that every request is tracked, processed, and resolved promptly for operational effectiveness."
             />
           </Link>
           <Link to="/login" className="card-link">
@@ -44,7 +46,21 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
               content="Efficiently handle and track all incoming and outgoing mail within the department. This system ensures all correspondence is properly managed, and delivered."
             />
           </Link>
+          
         </div>
+     
+        <div className="title-container">
+          <Link to="/dashboard">
+            <div style={{ display: 'inline-block' }}>
+              <h3 style={{ color: 'black', fontSize: '25px', fontWeight: 200, margin: '0 2rem', display: 'inline-block' }}>
+                Click Here To Get All Backend Data 
+              </h3>
+              <img src="assets/Enter.png" alt="Enter" style={{ width: '50px', height: '60px', verticalAlign: 'middle' }} />
+            </div>
+          </Link>
+        </div>
+
+
 
         <Outlet />  {/* This is where the routed components will be rendered */}
       </main>

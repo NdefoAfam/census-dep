@@ -9,6 +9,7 @@ import Mail from './components/Pages/Mail';
 import Request from './components/Pages/Request';
 import LoginPage from './components/Pages/LoginPage';
 import SignupPage from './components/Pages/SignupPage';
+import Dashboard from './components/Pages/Dashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
           <Route path="request" element={<Request />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignupPage />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
