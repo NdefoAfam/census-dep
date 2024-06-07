@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './mail.css';
+import { getCurrentDate } from './date';
+import { getCurrentTime } from './time';
 
 const Mail = () => {
+  const [error, setError] = useState(null);
+  const [currentDate, setCurrentDate] = useState(getCurrentDate());
+  const [currentTime, setCurrentTime] = useState(getCurrentTime());
+
   const [formData, setFormData] = useState({
     referenceId: '',
     department: '',
@@ -9,9 +15,24 @@ const Mail = () => {
     category: '',
     sender: '',
     request: '',
-    mailDate: '',
-    time: '',
+    mailDate: getCurrentDate(),
+    time: getCurrentTime(),
   });
+
+  useEffect(() => {
+    // Update the time every second
+    const interval = setInterval(() => {
+      const time = getCurrentTime();
+      setCurrentTime(time);
+      setFormData((prevData) => ({
+        ...prevData,
+        time: time,
+      }));
+    }, 1000);
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,7 +46,7 @@ const Mail = () => {
 
   return (
     <div>
-      <h2></h2>
+      <h2>Mail Form</h2>
       <form onSubmit={handleSubmit} style={{}}>
         <div className="hero-image">
           <img
@@ -54,27 +75,22 @@ const Mail = () => {
           >
             <option value="" disabled>Select Department</option>
             <option value="Office of The Chairman">Office of The Chairman</option>
-            <option value="Male">Office of The Chairman</option>
-          <option value="Male">Office of The DG</option>
-          <option value="Female">Cartography Department</option>
-          <option value="Male">Population Management</option>
-          <option value="Female">General Services</option>
-          <option value="Male">Procurement</option>
-          <option value="Female">Secretary to the Commission</option>
-          <option value="Female">
-            Human Resource Management and Administration
-          </option>
-          <option value="Male">Public Relations Department</option>
-          <option value="Female">Vital Registration Department</option>
-          <option value="Male">Legal Department</option>
-          <option value="Female">
-            Population Institute and Studies Department
-          </option>
-          <option value="Male">Public Administration Department</option>
-          <option value="Female">Account Department</option>
-          <option value="Male">ICT Department</option>
-          <option value="Female">Special Duties Department</option>
-          <option value="Female">Other</option>
+            <option value="Office of The DG">Office of The DG</option>
+            <option value="Cartography Department">Cartography Department</option>
+            <option value="Population Management">Population Management</option>
+            <option value="General Services">General Services</option>
+            <option value="Procurement">Procurement</option>
+            <option value="Secretary to the Commission">Secretary to the Commission</option>
+            <option value="Human Resource Management and Administration">Human Resource Management and Administration</option>
+            <option value="Public Relations Department">Public Relations Department</option>
+            <option value="Vital Registration Department">Vital Registration Department</option>
+            <option value="Legal Department">Legal Department</option>
+            <option value="Population Institute and Studies Department">Population Institute and Studies Department</option>
+            <option value="Public Administration Department">Public Administration Department</option>
+            <option value="Account Department">Account Department</option>
+            <option value="ICT Department">ICT Department</option>
+            <option value="Special Duties Department">Special Duties Department</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         <div className="form-group fullname">
@@ -110,10 +126,11 @@ const Mail = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="userRequest">Explain your request:</label>
+          <label htmlFor="request">Explain your request:</label>
           <textarea
-            id="userRequest"
-            value={formData.userRequest}
+            id="request"
+            name="request"
+            value={formData.request}
             onChange={handleChange}
             placeholder="Enter your request here"
           ></textarea>
@@ -144,6 +161,7 @@ const Mail = () => {
           <input type="submit" value="Submit" />
         </div>
       </form>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 };

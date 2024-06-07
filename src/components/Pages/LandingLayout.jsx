@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Card from '../Card'; // Ensure the Card component path is correct
 import '../../App.css'; // Adjust the path to App.css based on its location
 
+const LandingLayout = () => { 
+  const [animateCards, setAnimateCards] = useState(false);
 
+  useEffect(() => {
+    setAnimateCards(true);
+  }, []);
 
-const LandingLayout = () => { // Renamed the component to LandingLayout
   return (
     <div className="App">
       <header className="App-header">
@@ -21,7 +25,7 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
           </h3>
         </div>
 
-        <div className="card-container">
+        <div className={`card-container ${animateCards ? 'animate' : ''}`}>
           <Link to="/attendance" className="card-link">
             <Card 
               imgSrc="/assets/attendance.jpg" 
@@ -46,21 +50,18 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
               content="Efficiently handle and track all incoming and outgoing mail within the department. This system ensures all correspondence is properly managed, and delivered."
             />
           </Link>
-          
         </div>
      
         <div className="title-container">
           <Link to="/dashboard">
             <div style={{ display: 'inline-block' }}>
               <h3 style={{ color: 'black', fontSize: '25px', fontWeight: 200, margin: '0 2rem', display: 'inline-block' }}>
-                Click Here To Get All Backend Data 
+                Click Here To Get All Backend Data... 
               </h3>
               <img src="assets/Enter.png" alt="Enter" style={{ width: '50px', height: '60px', verticalAlign: 'middle' }} />
             </div>
           </Link>
         </div>
-
-
 
         <Outlet />  {/* This is where the routed components will be rendered */}
       </main>
@@ -71,7 +72,7 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
           <ul className="footer-links">
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms of Service</a></li>
-            <li><Link to ="/Contact">Contact</Link></li>
+            <li><Link to="/Contact">Contact</Link></li>
           </ul>
         </div>
       </footer>
@@ -79,4 +80,4 @@ const LandingLayout = () => { // Renamed the component to LandingLayout
   );
 };
 
-export default LandingLayout; // Export the component
+export default LandingLayout;

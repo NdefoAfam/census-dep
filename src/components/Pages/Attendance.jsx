@@ -1,12 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Attendance.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { getCurrentLocation } from './gps';
+import { getCurrentDate } from './date';
+import { getCurrentTime } from './time';
 
 const Attendance = () => {
+  const [location, setLocation] = useState({ latitude: null, longitude: null });
+  const [error, setError] = useState(null);
+  const [currentDate, setCurrentDate] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    // Fetch GPS coordinates
+    getCurrentLocation()
+      .then((coords) => {
+        setLocation(coords);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+
+    // Set current date
+    const date = getCurrentDate();
+    setCurrentDate(date);
+
+    // Update the time every second
+    const interval = setInterval(() => {
+      const time = getCurrentTime();
+      setCurrentTime(time);
+    }, 1000);
+
+    // Clean up interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
-     
       <form action="thankyoupage.html">
         <div className="hero-image">
           <img
@@ -20,12 +49,12 @@ const Attendance = () => {
         <br />
         <div className="location-info" style={{ display: 'flex', alignItems: 'flex-start' }}>
           <label htmlFor="latitude" style={{ fontSize: '13px' }}>
-            Latitude: <span id="latitude"></span>
+            Latitude: <span id="latitude">{location.latitude}</span>
           </label>
         </div>
         <div className="location-info" style={{ display: 'flex', alignItems: 'flex-start' }}>
           <label htmlFor="longitude" style={{ fontSize: '13px' }}>
-            Longitude: <span id="longitude"></span>
+            Longitude: <span id="longitude">{location.longitude}</span>
           </label>
         </div>
         <br />
@@ -33,150 +62,84 @@ const Attendance = () => {
         <div className="form-group">
           <label htmlFor="fullName">Full Name</label>
           <select id="fullName">
-            <option value="" selected disabled>
+            <option value="" disabled>
               Select Name
             </option>
-            <option value="Male">Ag. Director Abubakar Bello Afegbua</option> 
-      <option value="Female">Abdullahi Abubakar
-      </option>
-      <option value="Male">Abubakar Aisha
-      </option> 
-      <option value="Female">Abubakar Muhammad Zayyad
-      </option>
-      <option value="Male">Achinonu Pamela
-      </option> 
-      <option value="Female">Adebayo Olayide Ajani
-      </option>
-      <option value="Female">Adesanya Oluwafemi Dayo
-      </option>
-      <option value="Male">Agabi Alhassan Yusuf
-      </option> 
-      <option value="Female">Aisaborhale Victor Emiohe
-      </option>
-      <option value="Male">Ajayi Oluwaseun
-      </option> 
-      <option value="Female">Ajayi Oluwatosin Esther
-      </option>
-      <option value="Male">Aliyu Taofeeq
-      </option> 
-      <option value="Female">Allah-Kayisafiyanu Safiyanu
-      </option>
-      <option value="Male">Bello Usman
-      </option> 
-      <option value="Female">Bukarmusa Alhaji
-      </option>
-      <option value="Male">Bulus Jonathan Bulus
-      </option> 
-      <option value="Female">Charlie Samuel Silas
-      </option>
-      <option value="Male">Danladi Chewazalo Juliet
-      </option> 
-      <option value="Female">Duru Emeka Jackline
-      </option>
-      <option value="Male">Ezeihekaibee Sylvia Chidumebi
-      </option> 
-      <option value="Female">Ezekwe Harrison Tabansi
-      </option>
-      <option value="Male">Gajimi Umar
-      </option> 
-      <option value="Female">Gurinsa'Adu Dahiru
-      </option>
-      <option value="Male">Hammed Titilayo Tawakalitu
-      </option> 
-      <option value="Female">Haruna Audu Falnyi
-      </option>
-      <option value="Female">Ibrahim Habibu Ibbi
-      </option>
-      <option value="Male">Ibrahim Yakubu  Aduku
-      </option> 
-      <option value="Female">Jalingo Inuwa Bakare
-      </option>
-      <option value="Male">Joseph Taye Oluwaseyi Taye
-      </option> 
-      <option value="Female">Kareem Olushola
-      </option>
-      <option value="Female">Madaki Abubakar
-      </option>
-      <option value="Male">Makinwa Paul Tobiloba
-      </option> 
-      <option value="Female">Mohammed Ahmed Wudini
-      </option>
-      <option value="Male">Muhammad Musa Shabbal
-      </option> 
-      <option value="Female">Sylvia Dumebi
-      </option>
-      <option value="Male">Musa Vincent Ogaji
-      </option> 
-      <option value="Female">Ndefo Afamefuna Nkemjika
-      </option>
-      <option value="Male">Nemieboka Amina Abigail
-      </option> 
-      <option value="Female">Njoku Benneth Chinedu
-      </option>
-      <option value="Male">Nteme Barbara Francis
-      </option> 
-      <option value="Female">Odela Joan Ame
-      </option>
-      <option value="Male">Odibo Aghogho P.
-      </option> 
-      <option value="Female">Ogbole Anthony
-      </option>
-      <option value="Male">Ogbu Emmanuel Chisom
-      </option> 
-      <option value="Female">Ogedegbe Josephine Ese
-      </option>
-      <option value="Male">Ogenyi Sandra
-      </option> 
-      <option value="Female">Ogidi Mary Oyiweche
-      </option>
-      <option value="Male">Oke Olayinka Oluwatosin
-      </option> 
-      <option value="Female">Olufadele Elizabeth Bose
-      </option>
-      <option value="Male">Omonijo Ibukunoluwa
-      </option> 
-      <option value="Female">Osunde Helen Ebosetale
-      </option>
-      <option value="Female">Oyibo Onyeiweanehi Violet
-      </option>
-      <option value="Male">Raymond -Sen Jinteno
-      </option> 
-      <option value="Female">Saleh Abubakar
-      </option>
-      <option value="Male">Sandra Henry
-      </option> 
-      <option value="Female">Shuaibu Mohammed Jamiu
-      </option>
-      <option value="Male">Solagbade Peter Oluwole
-      </option> 
-      <option value="Female">Tsakpa Adigizi Anthony
-      </option>
-      <option value="Male">Uchechukwu Ngozi Clara
-      </option> 
-      <option value="Female">Udem Gibson Chimezie
-      </option>
-      <option value="Male">Umeaniba Maureen
-      </option> 
-      <option value="Female">Usman  Halima Said
-      </option>
-      <option value="Male">Usman Saad
-      </option> 
-      <option value="Female">Yusuf Imran Musa
-      </option>
+            <option value="Ag. Director Abubakar Bello Afegbua">Ag. Director Abubakar Bello Afegbua</option>
+            <option value="Abdullahi Abubakar">Abdullahi Abubakar</option>
+            <option value="Abubakar Aisha">Abubakar Aisha</option>
+            <option value="Abubakar Muhammad Zayyad">Abubakar Muhammad Zayyad</option>
+            <option value="Achinonu Pamela">Achinonu Pamela</option>
+            <option value="Adebayo Olayide Ajani">Adebayo Olayide Ajani</option>
+            <option value="Adesanya Oluwafemi Dayo">Adesanya Oluwafemi Dayo</option>
+            <option value="Agabi Alhassan Yusuf">Agabi Alhassan Yusuf</option>
+            <option value="Aisaborhale Victor Emiohe">Aisaborhale Victor Emiohe</option>
+            <option value="Ajayi Oluwaseun">Ajayi Oluwaseun</option>
+            <option value="Ajayi Oluwatosin Esther">Ajayi Oluwatosin Esther</option>
+            <option value="Aliyu Taofeeq">Aliyu Taofeeq</option>
+            <option value="Allah-Kayisafiyanu Safiyanu">Allah-Kayisafiyanu Safiyanu</option>
+            <option value="Bello Usman">Bello Usman</option>
+            <option value="Bukarmusa Alhaji">Bukarmusa Alhaji</option>
+            <option value="Bulus Jonathan Bulus">Bulus Jonathan Bulus</option>
+            <option value="Charlie Samuel Silas">Charlie Samuel Silas</option>
+            <option value="Danladi Chewazalo Juliet">Danladi Chewazalo Juliet</option>
+            <option value="Duru Emeka Jackline">Duru Emeka Jackline</option>
+            <option value="Ezeihekaibee Sylvia Chidumebi">Ezeihekaibee Sylvia Chidumebi</option>
+            <option value="Ezekwe Harrison Tabansi">Ezekwe Harrison Tabansi</option>
+            <option value="Gajimi Umar">Gajimi Umar</option>
+            <option value="Gurinsa'Adu Dahiru">Gurinsa'Adu Dahiru</option>
+            <option value="Hammed Titilayo Tawakalitu">Hammed Titilayo Tawakalitu</option>
+            <option value="Haruna Audu Falnyi">Haruna Audu Falnyi</option>
+            <option value="Ibrahim Habibu Ibbi">Ibrahim Habibu Ibbi</option>
+            <option value="Ibrahim Yakubu Aduku">Ibrahim Yakubu Aduku</option>
+            <option value="Jalingo Inuwa Bakare">Jalingo Inuwa Bakare</option>
+            <option value="Joseph Taye Oluwaseyi Taye">Joseph Taye Oluwaseyi Taye</option>
+            <option value="Kareem Olushola">Kareem Olushola</option>
+            <option value="Madaki Abubakar">Madaki Abubakar</option>
+            <option value="Makinwa Paul Tobiloba">Makinwa Paul Tobiloba</option>
+            <option value="Mohammed Ahmed Wudini">Mohammed Ahmed Wudini</option>
+            <option value="Muhammad Musa Shabbal">Muhammad Musa Shabbal</option>
+            <option value="Sylvia Dumebi">Sylvia Dumebi</option>
+            <option value="Musa Vincent Ogaji">Musa Vincent Ogaji</option>
+            <option value="Ndefo Afamefuna Nkemjika">Ndefo Afamefuna Nkemjika</option>
+            <option value="Nemieboka Amina Abigail">Nemieboka Amina Abigail</option>
+            <option value="Njoku Benneth Chinedu">Njoku Benneth Chinedu</option>
+            <option value="Nteme Barbara Francis">Nteme Barbara Francis</option>
+            <option value="Odela Joan Ame">Odela Joan Ame</option>
+            <option value="Odibo Aghogho P.">Odibo Aghogho P.</option>
+            <option value="Ogbole Anthony">Ogbole Anthony</option>
+            <option value="Ogbu Emmanuel Chisom">Ogbu Emmanuel Chisom</option>
+            <option value="Ogedegbe Josephine Ese">Ogedegbe Josephine Ese</option>
+            <option value="Ogenyi Sandra">Ogenyi Sandra</option>
+            <option value="Ogidi Mary Oyiweche">Ogidi Mary Oyiweche</option>
+            <option value="Oke Olayinka Oluwatosin">Oke Olayinka Oluwatosin</option>
+            <option value="Olufadele Elizabeth Bose">Olufadele Elizabeth Bose</option>
+            <option value="Omonijo Ibukunoluwa">Omonijo Ibukunoluwa</option>
+            <option value="Osunde Helen Ebosetale">Osunde Helen Ebosetale</option>
+            <option value="Oyibo Onyeiweanehi Violet">Oyibo Onyeiweanehi Violet</option>
+            <option value="Raymond -Sen Jinteno">Raymond -Sen Jinteno</option>
+            <option value="Saleh Abubakar">Saleh Abubakar</option>
+            <option value="Sandra Henry">Sandra Henry</option>
+            <option value="Shuaibu Mohammed Jamiu">Shuaibu Mohammed Jamiu</option>
+            <option value="Solagbade Peter Oluwole">Solagbade Peter Oluwole</option>
+            <option value="Tsakpa Adigizi Anthony">Tsakpa Adigizi Anthony</option>
+            <option value="Uchechukwu Ngozi Clara">Uchechukwu Ngozi Clara</option>
+            <option value="Udem Gibson Chimezie">Udem Gibson Chimezie</option>
+            <option value="Umeaniba Maureen">Umeaniba Maureen</option>
+            <option value="Usman Halima Said">Usman Halima Said</option>
+            <option value="Usman Saad">Usman Saad</option>
+            <option value="Yusuf Imran Musa">Yusuf Imran Musa</option>
           </select>
         </div>
         <div className="form-group">
           <label htmlFor="currentTime">Attendance Time:</label>
-          <span id="currentTime"></span>
+          <span id="currentTime">{currentTime}</span>
         </div>
         <br />
-        <div className="form-group">
-          <label htmlFor="time">Time</label>
-          <input type="text" id="time" placeholder="Current time" disabled />
-        </div>
+
         <div className="form-group">
           <label htmlFor="date">Date</label>
-          <input type="date" id="date" placeholder="Select your date" disabled />
+          <input type="date" id="date" disabled value={currentDate} />
         </div>
         <div className="form-group">
           <label htmlFor="postingLocation">Posting</label>
@@ -189,6 +152,7 @@ const Attendance = () => {
           <input type="submit" value="Submit" />
         </div>
       </form>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 };

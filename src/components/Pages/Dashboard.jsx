@@ -3,8 +3,8 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   return (
-    <div>
-      
+    
+    <div className="dashboard-wrapper">
       <div className="container">
         <h2 className="heading-primary">Document Management System</h2>
         <h3 className="heading-secondary">Download backend documents in Excel format</h3>
@@ -20,10 +20,9 @@ const Dashboard = () => {
               <td>Document 1</td>
               <td><a href="/path/to/document1.xlsx" download="document1.xlsx">Download</a></td>
             </tr>
-            {/* Repeat this pattern for each document */}
+            {/* Add more rows as needed */}
           </tbody>
         </table>
-        
       </div>
     </div>
   );
