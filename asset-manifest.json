@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/census-dep/static/css/main.eff60e10.css",
-    "main.js": "/census-dep/static/js/main.8558bb65.js",
+    "main.css": "/census-dep/static/css/main.79df7f62.css",
+    "main.js": "/census-dep/static/js/main.babb1752.js",
     "index.html": "/census-dep/index.html",
-    "main.eff60e10.css.map": "/census-dep/static/css/main.eff60e10.css.map",
-    "main.8558bb65.js.map": "/census-dep/static/js/main.8558bb65.js.map"
+    "main.79df7f62.css.map": "/census-dep/static/css/main.79df7f62.css.map",
+    "main.babb1752.js.map": "/census-dep/static/js/main.babb1752.js.map"
   },
   "entrypoints": [
-    "static/css/main.eff60e10.css",
-    "static/js/main.8558bb65.js"
+    "static/css/main.79df7f62.css",
+    "static/js/main.babb1752.js"
   ]
 }
