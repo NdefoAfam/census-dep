@@ -28,7 +28,7 @@ const LandingLayout = () => {
         <div className={`card-container ${animateCards ? 'animate' : ''}`}>
           <Link to="/attendance" className="card-link">
             <Card 
-              imgSrc="/assets/attendance.jpg" 
+              imgSrc="https://i.pinimg.com/736x/cc/f4/3c/ccf43c175aaab04588db99fd2f714ab2.jpg" 
               altText="Attendance Management"
               title="Attendance Management"
               content="Efficiently track and manage staff attendance with our comprehensive system. Ensure accuracy and streamline your processes to improve productivity and accountability within your department."
@@ -36,7 +36,7 @@ const LandingLayout = () => {
           </Link>
           <Link to="/login" className="card-link">
             <Card 
-              imgSrc="/assets/requestcard.jpg" 
+              imgSrc="https://i.pinimg.com/736x/db/58/e3/db58e3cccbdb0be91875188e3941692a.jpg" 
               altText="Request Management"
               title="Request Management"
               content="Streamline and manage all visitor requests efficiently. This system ensures that every request is tracked, processed, and resolved promptly for operational effectiveness."
@@ -44,7 +44,7 @@ const LandingLayout = () => {
           </Link>
           <Link to="/login" className="card-link">
             <Card 
-              imgSrc="/assets/mail.jpg" 
+              imgSrc="https://i.pinimg.com/736x/e8/b1/7a/e8b17a733fac4035170a5d21fd994bcd.jpg" 
               altText="Mails Management"
               title="Mails Management"
               content="Efficiently handle and track all incoming and outgoing mail within the department. This system ensures all correspondence is properly managed, and delivered."
