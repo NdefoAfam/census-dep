@@ -10,6 +10,7 @@ import Request from './components/Pages/Request';
 import LoginPage from './components/Pages/LoginPage';
 import SignupPage from './components/Pages/SignupPage';
 import Dashboard from './components/Pages/Dashboard';
+import Thankyoupage from './components/Pages/Thankyoupage'; // Import the Thankyoupage component
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +25,7 @@ root.render(
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="thankyoupage" element={<Thankyoupage />} /> {/* Add the Thankyoupage route */}
         </Route>
       </Routes>
     </BrowserRouter>
