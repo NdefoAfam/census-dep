@@ -3,14 +3,12 @@ import './Attendance.css';
 import { getCurrentLocation } from './gps';
 import { getCurrentDate } from './date';
 import { getCurrentTime } from './time';
-import { useNavigate } from 'react-router-dom';
 
 const Attendance = () => {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [error, setError] = useState(null);
   const [currentDate, setCurrentDate] = useState('');
   const [currentTime, setCurrentTime] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch GPS coordinates
@@ -36,14 +34,9 @@ const Attendance = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    navigate('/thankyoupage'); // Navigate to Thankyoupage
-  };
-
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form action="thankyoupage.html">
         <div className="hero-image">
           <img
             src="https://i.pinimg.com/736x/84/f6/1b/84f61b14ab8ea65cccb77238c85b8dd0.jpg"
