@@ -58,7 +58,7 @@ const LandingLayout = () => {
               <h3 style={{ color: 'black', fontSize: '25px', fontWeight: 200, margin: '0 2rem', display: 'inline-block' }}>
                 Click Here To Get All Backend Data... 
               </h3>
-              <img src="assets/Enter.png" alt="Enter" style={{ width: '50px', height: '60px', verticalAlign: 'middle' }} />
+              <img src="https://img.icons8.com/?size=100&id=26218&format=png&color=000000" alt="Enter" style={{ width: '50px', height: '60px', verticalAlign: 'middle' }} />
             </div>
           </Link>
         </div>
@@ -69,7 +69,7 @@ const LandingLayout = () => {
             <h3 style={{ color: 'black', fontSize: '25px', fontWeight: 200, margin: '0 2rem', display: 'inline-block' }}>
                 Click Here To Get Data For Population Projection... 
               </h3>
-              <img src="assets/Enter.png" alt="Enter" style={{ width: '50px', height: '60px', verticalAlign: 'middle' }} />
+              <img src="https://img.icons8.com/?size=100&id=26218&format=png&color=000000" alt="Enter" style={{ width: '50px', height: '60px', verticalAlign: 'middle' }} />
             </div>
           </Link>
         </div>
