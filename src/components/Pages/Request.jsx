@@ -37,7 +37,7 @@ const Request = () => {
       <h2>Request Form</h2>
       <form onSubmit={handleSubmit} style={{ marginTop: '' }}>
         <div className="hero-image">
-          <img src="image/data.png" style={{ marginTop: '' }} alt="Census Data" />
+          <img src="https://i.pinimg.com/736x/d4/99/03/d49903fe1424194ee82d8720db09e154.jpg" style={{ marginTop: '' }} alt="Census Data" />
         </div><br />
         <div className="form-group">
           <label htmlFor="fullname">Full Name</label>
